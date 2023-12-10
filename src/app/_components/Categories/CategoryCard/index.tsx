@@ -10,7 +10,7 @@ import { useFilter } from '../../../_providers/Filter'
 const CategoryCard = ({ title, media, id }: Category) => {
   const mediaUrl = media as Media
 
-  const {setCategoryFilters} = useFilter()
+  const { setCategoryFilters } = useFilter()
   return (
     <Link
       href={'/products'}
