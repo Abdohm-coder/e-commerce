@@ -7,5 +7,6 @@ module.exports = {
     'prettier/prettier': 'off',
     'no-console': 'off',
     'simple-import-sort/imports': 'off',
+    'eol-last': 'off'
   },
 }
