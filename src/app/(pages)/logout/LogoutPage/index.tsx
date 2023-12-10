@@ -1,10 +1,12 @@
 'use client'
 
 import React, { Fragment, useEffect, useState } from 'react'
-import Link from 'next/link'
+
+import classes from './index.module.scss'
 
 import { Settings } from '../../../../payload/payload-types'
 import { useAuth } from '../../../_providers/Auth'
+import { Button } from '../../../_components/Button'
 
 export const LogoutPage: React.FC<{
   settings: Settings
@@ -31,21 +33,17 @@ export const LogoutPage: React.FC<{
   return (
     <Fragment>
       {(error || success) && (
-        <div>
+        <div className={classes.wrapper}>
           <h1>{error || success}</h1>
-          <p>
-            {'What would you like to do next?'}
+          <p>{'What would you like to do next?'}</p>
+          <div className={classes.actionBtn}>
             {typeof productsPage === 'object' && productsPage?.slug && (
               <Fragment>
-                {' '}
-                <Link href={`/${productsPage.slug}`}>Click here</Link>
-                {` to shop.`}
+                <Button href={`/${productsPage.slug}`} label="Shop" appearance="primary" />
               </Fragment>
             )}
-            {` To log back in, `}
-            <Link href="/login">click here</Link>
-            {'.'}
-          </p>
+            <Button href="/login" label="Login" appearance="secondary" />
+          </div>
         </div>
       )}
     </Fragment>
