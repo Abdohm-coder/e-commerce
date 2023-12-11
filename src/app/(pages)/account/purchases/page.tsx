@@ -7,6 +7,8 @@ import { formatDateTime } from '../../../_utilities/formatDateTime'
 import { getMeUser } from '../../../_utilities/getMeUser'
 
 import classes from './index.module.scss'
+import { Metadata } from 'next'
+import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
 
 export default async function Purchases() {
   const { user } = await getMeUser({
@@ -55,4 +57,13 @@ export default async function Purchases() {
       </div>
     </div>
   )
+}
+
+export const metadata: Metadata = {
+  title: 'My Purchases Products',
+  description: 'My purchases products',
+  openGraph: mergeOpenGraph({
+    title: 'My Purchases Products',
+    url: '/account/purchases',
+  }),
 }
