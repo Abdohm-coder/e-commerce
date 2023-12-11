@@ -9,6 +9,8 @@ import { fetchDoc } from '../../_api/fetchDoc'
 import { draftMode } from 'next/headers'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { HR } from '../../_components/HR'
+import { Metadata } from 'next'
+import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
 
 const ProductsPage = async () => {
   const { isEnabled: isDraftMode } = draftMode()
@@ -38,3 +40,12 @@ const ProductsPage = async () => {
 }
 
 export default ProductsPage
+
+export const metadata: Metadata = {
+  title: 'Products',
+  description: 'Shop the products and enjoy the deals!',
+  openGraph: mergeOpenGraph({
+    title: 'Products',
+    url: '/products',
+  }),
+}
